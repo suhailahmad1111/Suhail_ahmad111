@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secure Video</title>
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  margin-top: 40px;
+}
+#loginBox, #videoBox {
+  display: none;
+}
+input {
+  padding: 10px;
+  margin: 5px;
+  width: 200px;
+}
+button {
+  padding: 10px 20px;
+}
+a {
+  font-size: 18px;
+  color: blue;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- Simple Link -->
+<a onclick="showLogin()">▶ Watch Video</a>
+
+<!-- Login Box -->
+<div id="loginBox">
+  <h3>Login Required</h3>
+  <input type="text" id="user" placeholder="Enter ID"><br>
+  <input type="password" id="pass" placeholder="Enter Password"><br>
+  <button onclick="checkLogin()">Login</button>
+  <p id="msg" style="color:red;"></p>
+</div>
+
+<!-- Video -->
+<div id="videoBox">
+  <h3>Video Playing</h3>
+  <video width="300" controls>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+</div>
+
+<script>
+function showLogin(){
+  document.getElementById("loginBox").style.display="block";
+}
+
+function checkLogin(){
+  let id = document.getElementById("user").value;
+  let pw = document.getElementById("pass").value;
+
+  if(id === "admin" && pw === "1234"){
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("videoBox").style.display="block";
+  } else {
+    document.getElementById("msg").innerText = "Wrong ID or Password";
+  }
+}
+</script>
+
+</body>
+</html>
